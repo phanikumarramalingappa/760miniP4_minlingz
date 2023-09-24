@@ -3,6 +3,27 @@
 
 GitHub Actions Matrix Build for Multiple Python Versions: 3.9, 3.10, 3.11
 
+## GitHub actions utilize matrix build for Python version 3.9, 3.10, 3.11 - `format.yml`, `install.yml`, `lint.yml`, `test.yml`
+
+```yml
+...
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.9", "3.10", "3.11"]
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+...
+```
+
 ## Files
 
 * `world-small.csv` -- Dataset to read
@@ -143,3 +164,8 @@ numpy==1.25.2
 pandas==2.1
 matplotlib==3.7.1
 ```
+## Link example to successful build of python 3.9, 3.10, 3.11
+
+https://github.com/nogibjj/760miniP4_minlingz/actions/runs/6287023438
+
+![Alt text](github_action_multi_python_version.png)
